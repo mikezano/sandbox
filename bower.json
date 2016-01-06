@@ -1,0 +1,24 @@
+{
+  "name": "sandbox",
+  "homepage": "https://github.com/mikezano/sandbox",
+  "authors": [
+    "Michael Manzano <mikezano@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4"
+  },
+  "install":{
+      "path": "lib"
+  }
+}
