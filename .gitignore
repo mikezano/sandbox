@@ -1,5 +1,9 @@
 bower_components/
+node_modules/
 lib/
 *.js
 *.js.map
 *.css
+
+!.gitignore
+!gulpfile.js
