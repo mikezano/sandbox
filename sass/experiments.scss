@@ -1,0 +1,11 @@
+﻿#content{
+    background: linear-gradient(#303030, #444444 45%,  #444444 55%, #303030 );
+ 
+    background-repeat: no-repeat;
+    background-attachment: fixed; //makes it so that when you scroll, background will not
+    position:absolute;
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
+}

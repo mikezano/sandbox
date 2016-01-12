@@ -1,0 +1,18 @@
+﻿@mixin setSize($width, $height){
+    width:$width;
+    height:$height;
+}
+
+@mixin setPosition($position, $left, $top, $right, $bottom){
+    position: $position;
+    @if $left != null{left: $left;}
+    @if $top != null{top: $top;}
+    @if $right != null {right: $right;}    
+    @if $bottom != null {bottom: $bottom;}
+}
+
+@mixin setSizeAndPosition($width, $height, $position, $left, $top, $right, $bottom, $margin-left){
+    @include setSize($width, $height);
+    @include setPosition($position, $left, $top, $right, $bottom);
+    margin-left: $margin-left;
+}

@@ -1,0 +1,82 @@
+﻿@import 'Mixins/animationMixins.scss';
+
+$width:100vw;
+$height:100vh;
+
+#content{
+
+    background: linear-gradient(#ccc, white 45%,  white 55%, #ccc ); 
+    background-repeat: no-repeat;
+    background-attachment: fixed; //makes it so that when you scroll, background will not
+    position:absolute;
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
+    overflow:hidden;
+}
+
+
+$image: '../Content/img/ocean.jpg';
+.raindrops-background{
+    position:absolute;
+    width:100vw;
+    height:100vh;
+    background-size:auto auto;
+    background-repeat:no-repeat;
+    background:url($image);
+    background-position:50%;
+    -webkit-filter:blur(10px);
+}
+
+.raindrop {
+    position: absolute;
+    border-radius: 100%;
+    background-image: url($image);
+    background-size: $width*0.05 $height*0.05;
+    background-position: 50%;
+    -moz-transform: rotate(180deg) rotateY(0);
+    -ms-transform: rotate(180deg) rotateY(0);
+    -o-transform: rotate(180deg) rotateY(0);
+    -webkit-transform: rotate(180deg) rotateY(0);
+    transform: rotate(180deg) rotateY(0);
+    filter:brightness(1.2);
+}
+
+@for $i from 1 through 40{
+
+    $x: random();
+    $y: random(); 
+
+    $drop-width:14px+random(11);
+ 	$drop-stretch:$drop-width  + 2;
+	$drop-height:$drop-stretch;
+
+    .raindrop:nth-child(#{$i}) {
+
+        opacity:0;
+        left: $x*100vw;
+        top: $y*10vh;
+        width: $drop-width - 4; 
+        height: $drop-height;
+        background-position: percentage($x) percentage($y*0.01);
+        box-shadow: 0 -2px 2px rgba(0,0,0,0.5);
+
+       @include animation(slide-down, 
+       2000ms + random()*6000ms, 
+       cubic-bezier(random(), random(), random(), random()), 
+       infinite, 
+       random()*3000ms, null);
+    }
+}
+
+    @include keyFrames(slide-down){
+        10%{
+            opacity:1;
+        }
+        100%{
+            opacity:1;
+            top:100vh;
+            background-position-y:-20%;
+        }
+    }

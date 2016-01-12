@@ -1,0 +1,80 @@
+﻿@import '../siteVars.scss';
+@import '../Mixins/animationMixins.scss';
+@import '../Mixins/sizeMixins.scss';
+
+$curtain_size: 400px;
+
+
+#left-curtain {
+
+    @include setSizeAndPosition( $curtain_size, $curtain_size, absolute, -300px, 0, null, null, null );
+    background: linear-gradient(45deg, $colorBlue, $colorBlue 90%, $colorBlueLighten1);
+
+    &::after {
+        content: "";
+        display: block;
+        @include setSizeAndPosition($curtain_size, $curtain_size, absolute, $curtain_size, 0, null, null, null);
+        background: linear-gradient(45deg, $colorBlue, $colorBlue 40%, $colorBlueLighten1 50%, rgba(0,0,0,0) 50%, rgba(0,0,0,0));
+    }
+
+    &.open {
+        @include animation(left-curtain-open, $triangle-animation-time + 500ms, $quick-ease-in, 1, null, forwards);
+    }
+
+    &.close {
+        @include animation(left-curtain-close, $triangle-animation-time + 500ms, $quick-ease-in, 1, null, forwards);
+    }
+}
+
+@include keyFrames(left-curtain-open) {
+    100% {
+        left: -500px;
+    }
+}
+
+@include keyFrames(left-curtain-close) {
+    0% {
+        left: -500px;
+    }
+
+    100% {
+        left: -300px;
+    }
+}
+
+#right-curtain {
+
+    @include setSizeAndPosition($curtain_size, $curtain_size, absolute, null, 0, -300px, null,null);
+    background: linear-gradient(45deg, $colorBlueLighten1, $colorBlue 10%, $colorBlue);
+
+    &::before {
+        content: "";
+        display: block;
+        @include setSizeAndPosition($curtain_size, $curtain_size, absolute, null, 0, $curtain_size, null,null);
+        background: linear-gradient(45deg, rgba(0,0,0,0), rgba(0,0,0,0) 50%, $colorBlueLighten1 50%, $colorBlue 60%, $colorBlue);
+    }
+
+    &.open {
+        @include animation(right-curtain-open, $triangle-animation-time + 500ms, $quick-ease-in, 1, null, forwards);
+    }
+
+    &.close {
+        @include animation(right-curtain-close, $triangle-animation-time + 500ms, $quick-ease-in, 1, null, forwards);
+    }
+}
+
+@include keyFrames(right-curtain-open) {
+    100% {
+        right: -500px;
+    }
+}
+
+@include keyFrames(right-curtain-close) {
+    0% {
+        right: -500px;
+    }
+
+    100% {
+        right: -300px;
+    }
+}

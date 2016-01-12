@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Experiments</title>
+    <link href="content/images/favicon.ico" rel="icon" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="sass/site.css">
+    <link rel="stylesheet" type="text/css" href="sass/hub/hub.css">
+    <link rel="stylesheet" type="text/css" href="sass/hub/hubCurtains.css">
+    <link rel="stylesheet" type="text/css" href="sass/hub/hubTriangles.css">
+    <link rel="stylesheet" type="text/css" href="sass/hub/hubMenu.css">
+    <link rel="stylesheet" type="text/css" href="sass/resume.css">
+    <link href='http://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
+
+</head>
+<!--need to figure out why ng-animate-children has to be added-->
+<body ng-app="angularApp" ng-animate-children>
+
+    <div id="content" ng-view></div>
+
+    <!--Libraries-->
+    <script src="lib/jquery/jquery.js"></script>
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular-route/angular-route.js"></script>
+    <script src="lib/angular-animate/angular-animate.js"></script>
+    <script src="lib/linq-js/linq.js"></script>
+
+    <!--App-->
+    <script src="app/app.js"></script>
+    <script src="app/services/MessageService.js"></script>
+    <script src="app/services/InjectCssService.js"></script>
+    <script src="app/controller/homeController.js"></script>
+    <script src="app/controller/experimentsController.js"></script>
+    <script src="app/controller/rainmanController.js"></script>
+    <script src="app/directives/hub.js"></script>
+    <script src="app/directives/hubMenu.js"></script>
+    <script src="app/directives/resume.js"></script>
+    <script src="app/directives/experiments.js"></script>
+
+    <script>
+        jQuery(document).ready(function () {
+            app.run(document);
+        });
+    </script>
+
+</body>
+
+
+</html>

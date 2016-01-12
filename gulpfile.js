@@ -2,18 +2,21 @@ var gulp = require('gulp');
 var sass = require('gulp-sass');
 var ts = require('gulp-typescript');
 var sourcemaps = require('gulp-sourcemaps');
+var connect = require('gulp-connect');
+
+
+
 
 gulp.task('sass', function() {
-    gulp.src('sass/*.scss')
+    return gulp.src('sass/**/*.scss', {base: '.'})
         .pipe(sass())
-        .pipe(gulp.dest(function(f) {
-            return f.base;
-        }))
+        .pipe(gulp.dest('.')
+        .pipe(connect.reload()));
 });
 
 gulp.task('scripts', function() {
-	var tsResult = gulp.src('ts/*.ts', {base: '.'})
-                        .pipe(ts({}));
+	var tsResult = gulp.src('app/**/*.ts', {base: '.'})
+                        .pipe(ts());
         
 					   //.pipe(sourcemaps.init()) // This means sourcemaps will be generated 
 					  // .pipe(ts({
@@ -24,10 +27,28 @@ gulp.task('scripts', function() {
 	return tsResult.js
 				//.pipe(concat('output.js')) // You can use other plugins that also support gulp-sourcemaps 
 				//.pipe(sourcemaps.write()) // Now the sourcemaps are added to the .js file 
-				.pipe(gulp.dest('.'));
+				.pipe(gulp.dest('.')
+                .pipe(connect.reload()));
 });
 
-gulp.task('default', function() {
-    gulp.watch('sass/**/*.scss', ['sass']);
-    gulp.watch('ts/**/*.ts', ['scripts']);
+
+gulp.task('connect', function(){
+  connect.server({
+      root: '.',
+      livereload: true
+  });    
 });
+
+gulp.task('html', function(){
+    gulp.src('./**/*.html')
+    .pipe(connect.reload());
+});
+
+
+gulp.task('watch', function(){
+    gulp.watch('sass/**/*.scss', ['sass']);
+    gulp.watch('app/**/*.ts', ['scripts']);
+    gulp.watch('./**/*.html', ['html']);
+});
+
+gulp.task('default',  ['connect', 'watch']);

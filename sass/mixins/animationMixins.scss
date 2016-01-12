@@ -1,0 +1,51 @@
+﻿@mixin setSize($width, $height){
+    width:$width;
+    height:$height;
+}
+
+@mixin setPosition($position, $left, $top, $right, $bottom){
+    position: $position;
+    @if $left != null{left: $left;}
+    @if $top != null{top: $top;}
+    @if $right != null {right: $right;}    
+    @if $bottom != null {bottom: $bottom;}
+}
+
+@mixin setSizeAndPosition($width, $height, $position, $left, $top, $right, $bottom, $margin-left){
+    @include setSize($width, $height);
+    @include setPosition($position, $left, $top, $right, $bottom);
+    margin-left: $margin-left;
+}
+
+@mixin animation($name, $duration, $timing, $repeat, $delay, $fillMode) {
+    
+    -moz-animation: $name $duration $timing $repeat;
+    -o-animation: $name $duration $timing $repeat;
+    -webkit-animation: $name $duration $timing $repeat;
+    animation: $name $duration $timing $repeat;
+
+    @if $delay != null {
+        -moz-animation-delay: $delay;
+        -o-animation-delay: $delay;
+        -webkit-animation-delay: $delay;
+        animation-delay: $delay;
+    }
+
+    @if $fillMode != null {
+        -moz-animation-fill-mode: $fillMode;
+        -o-animation-fill-mode: $fillMode;
+        -webkit-animation-fill-mode: $fillMode;
+        animation-fill-mode: $fillMode;
+    }
+
+}
+
+@mixin keyFrames($name){
+    @keyframes #{$name}{
+        @content;
+    }
+
+    @-webkit-keyframes #{$name}{
+        @content;
+    }
+}

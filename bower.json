@@ -16,9 +16,16 @@
     "tests"
   ],
   "dependencies": {
-    "jquery": "~2.1.4"
+    "jquery": "~2.1.4",
+    "angular": "~1.4.8",
+    "linq-js": "*",
+    "angular-animate": "~1.4.8",
+    "angular-route": "~1.4.8"
   },
-  "install":{
-      "path": "lib"
+  "install": {
+    "path": "lib",
+    "sources": {
+      "linq-js": "bower_components/linq-js/src/linq.js"
+    }
   }
 }
