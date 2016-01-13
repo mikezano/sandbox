@@ -11,6 +11,4 @@ module Web.Client {
     }
 }
 app.registerController('Web.Client.RainManController', Web.Client.RainManController);
-app.registerRoute('/Rainman', 'Web.Client.RainManController as vm', 'App/Controller/rainmanController.html', 'CSS/rainman.css');
-
-  
+app.registerRoute('/Rainman', 'Web.Client.RainManController as vm', 'App/Controller/rainmanController.html', 'sass/rainman.css');
