@@ -30,5 +30,6 @@ body {
 
     &.ng-leave, &.ng-enter.ng-enter-active {
         opacity: 1;
+        display:none;
     }
 }
